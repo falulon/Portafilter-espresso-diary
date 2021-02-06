@@ -21,9 +21,9 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const helmet = require('helmet');
 const MongoStore = require('connect-mongo')(session);
- 
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/coffeetypes'; 
+const secret = process.env.SECRET || 'xhxnvnnadrugv!'
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/coffeetypes';
 mongoose.connect(dbUrl, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
  
 const db = mongoose.connection;
@@ -32,33 +32,11 @@ db.once("open", () => {
     console.log("Database connected");
 });
 mongoose.set('useFindAndModify', false);
-const secret = process.env.SECRET || 'xhxnvnnadrugv!'
+
+
+
 const app = express();
-const store = new MongoStore ({
-    url: dbUrl, 
-    secret,
-    touchAfter: 24 * 60 * 60 
-})
 
-store.on("error", function(e) {
-    console.log("session store error", e);
-})
-
-const sessionConfig = {
-    store,
-    name: 'bamba',
-    secret,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        httpOnly: true,
-        secure: true,
-        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 * 60 * 60 * 24 * 7
-    }
-// }
-
-app.use(session(sessionConfig));
 
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
@@ -72,6 +50,36 @@ app.use(mongoSanitize({
     replaceWith: '_'
   }));
 
+
+  //MongoStore - saves the session info into mongoDB
+const store = new MongoStore ({
+    url: dbUrl, 
+    secret,
+    touchAfter: 24 * 60 * 60 
+})
+
+store.on("error", function(e) {
+    console.log("session store error", e);
+})
+
+
+const sessionConfig = {
+    store,
+    name: 'bamba',
+    secret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        // secure: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+
+app.use(session(sessionConfig));
+app.use(flash());
+
 // app.use(helmet());
 app.use(
     helmet({
@@ -79,12 +87,10 @@ app.use(
     })
   );
 
-app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate())); 
-
 
 passport.serializeUser(User.serializeUser()); 
 passport.deserializeUser(User.deserializeUser());  //serialize = store it in the session, deserialize to unstore. 
@@ -101,15 +107,9 @@ app.use('/', userRoutes);
 app.use('/coffees', coffeesRoutes);
 app.use('/drinks', drinksRoutes);
 
-app.get('/fakeUser', async (req,res) => {
-    const user = new User ({email: 'colt@gmail.com', username: 'colt'});
-    const newUser = await User.register(user, 'roman');
-    res.send(newUser);
-})
 
 app.get('/', (req, res) => {
     res.redirect('/coffees');
-
 });
 
 
@@ -124,7 +124,8 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-const port = procee.env.PORT || 3000;
+const port = process.env.PORT || 3000;
+
 app.listen(port, ()=>{
     console.log('Serving on port', port)
 });
