@@ -9,13 +9,12 @@
             <div class="col-md-4">
                 <% if (drinks.length<1) { %>
 
-                    <div class="list-group-item coffee-type-card"> <a href="/coffees/">
+                    <div class="list-group-item coffee-type-card">
+                        <a href="/coffees/">
                             <img src="/img/coffee_bag.png" alt="beans bag" class="float-end img-fluid">
                             <h3>
                                 Select beans, then add a brew to start your diary!
                             </h3>
-
-
                         </a>
                     </div>
                     <% } %>
@@ -105,6 +104,14 @@
                                         </span>
                                         in total</h6>
                                     <% } %>
+                                        <div class="d-md-none">
+
+                                            <div class="my-2 btn btn-outline-secondary">
+                                                <a href="/coffees/">
+                                                    Back to Beans
+                                                </a>
+                                            </div>
+                                        </div>
             </div>
 
 

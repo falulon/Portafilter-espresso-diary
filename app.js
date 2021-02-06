@@ -108,9 +108,9 @@ app.use('/coffees', coffeesRoutes);
 app.use('/drinks', drinksRoutes);
 
 
-app.get('/', (req, res) => {
-    res.redirect('/coffees');
-});
+// app.get('/', (req, res) => {
+//     res.redirect('/coffees');
+// });
 
 
 

@@ -8,12 +8,12 @@
         </div>
     </div>
     <div class="row ">
-        <div class="col-md-2 order-sm-3 order-md-1">
-            <div class="row justify-content-between mb-3">
+        <div class="col-md-2 order-0 order-md-1">
+            <div class="row justify-content-between mb-3 coffee-light-background">
                 <hr class="d-block d-sm-none">
 
                 <div class="col">
-                    <div class="row justify-content-between mb-3">
+                    <div class="row justify-content-between mb-1">
 
                         <div class="col col-sm-auto ">
                             <h2 class="card-title coffee">
@@ -23,7 +23,7 @@
                                 <%=coffee.roastLevelText %> roast
                             </p>
                         </div>
-                        <div class="col ms-auto flex-shrink-1">
+                        <div class="col col-md-12 ms-auto flex-shrink-1">
                             <p class="float-end float-md-start">
                                 <%= coffee.weight %> grams
                                     <br>
@@ -32,173 +32,183 @@
                             </p>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                <% if (coffee.ageInDays> 1) { %> Days from Roast: <%= coffee.ageInDays %> <br>
+                                        <% } %>
+                                            Roast date: <%= (coffee.date).toLocaleDateString('pt-PT') %>
+                                                <div class="footer text-muted d-flex">
+                                                    <% if (coffee.drinks.length> 1) { %>
+                                                        <%=coffee.drinks.length %>
+                                                            drinks were made from this bag.<% } %>
+                                                </div>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <a href="/coffees/<%=coffee.id%>/edit" class="btn-sm btn-light float-end">Edit</a>
+                        </div>
 
-                    <% if (coffee.ageInDays> 1) %><p>Days from Roast: <%= coffee.ageInDays %> <br>
-                                Roast date: <%= (coffee.date).toLocaleDateString('pt-PT') %>
-                                    <div class="footer text-muted  d-flex ">
-                                        <% if (coffee.drinks.length> 1) { %>
-                                            <%=coffee.drinks.length %>
-                                                drinks were made from this bag.<% } %>
-                        </p>
-                </div>
-                <div class="col">
-                    <a href="/coffees/<%=coffee.id%>/edit" class="btn btn-sm btn-outline-secondary my-2">Edit</a>
-                    <hr class="d-block d-sm-none">
+                    </div>
                 </div>
             </div>
+            <!-- <div>
+                <hr class="d-block d-sm-none mt-1">
+            </div> -->
         </div>
-    </div>
 
-    <div class="col-md-4 col-sm-6 mb-3 order-md-2 order-4">
-        <img src='https://images.unsplash.com/photo-1511920170033-f8396924c348?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
-            class="img-fluid" alt=" new coffee bag">
-    </div>
-
+        <div class="col-md-4 col-sm-6 mb-3 order-3 order-md-2">
+            <img src='https://images.unsplash.com/photo-1511920170033-f8396924c348?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+                class="img-fluid" alt=" new coffee bag">
+        </div>
 
 
 
-    <div class="col-md-4 mb-3 order-sm-1 order-md-3">
-        <h1>Add a Brew</h1>
-        <form action="/drinks/coffees/<%=coffee.id%>/" method="POST" novalidate class="mb-3 validated-form">
 
-            <!-- drink type -->
-            <label class="form-label my-2" for="body">What did you make? </label>
-            <div class="mb-3 input-group input-group-lg">
-                <input class="form-control" type="text" name="drink[type] id=" drinkName" list="beverages"
-                    placeholder="Ristretto" required
-                    oninput="document.getElementById('drinkTotalWeightLabel').innerHTML = this.value + ' weight'">
-                <datalist id="beverages">
-                    <option value="Espresso" </option>
-                    <option value="Double Espresso" </option <option value="Cappucino" </option>
-                    <option value="Americano" </option>
-                    <option value="Mocha" </option>
-                    <option value="Latte" </option>
-                    <option value="Filter" </option>
-                    <option value="Macchiato" </option>
-                    <option value="AeroPress" </option>
-                    <option value="French Press" </option>
-                    <option value="Cold Brew" </option>
-                    <option value="Chemex" </option>
-                    <option value="V60" </option>
-                    <option value="Turkish" </option>
-                    <option value="Cortado" </option>
-                    <option value="Ristretto" </option>
-                    <option value="Other" </option>
-                    <option value="Tea" </option>
+        <div class="col-md-4 mb-3 order-1 order-md-3">
+            <h1>Add a Brew</h1>
+            <form action="/drinks/coffees/<%=coffee.id%>/" method="POST" novalidate class="mb-3 validated-form">
+
+                <!-- drink type -->
+                <label class="form-label my-2" for="body">What did you make? </label>
+                <div class="mb-3 input-group input-group-lg">
+                    <input class="form-control" type="text" name="drink[type] id=" drinkName" list="beverages"
+                        placeholder="Ristretto" required
+                        oninput="document.getElementById('drinkTotalWeightLabel').innerHTML = this.value + ' weight'">
+                    <datalist id="beverages">
+                        <option value="Espresso" </option>
+                        <option value="Double Espresso" </option <option value="Cappucino" </option>
+                        <option value="Americano" </option>
+                        <option value="Mocha" </option>
+                        <option value="Latte" </option>
+                        <option value="Filter" </option>
+                        <option value="Macchiato" </option>
+                        <option value="AeroPress" </option>
+                        <option value="French Press" </option>
+                        <option value="Cold Brew" </option>
+                        <option value="Chemex" </option>
+                        <option value="V60" </option>
+                        <option value="Turkish" </option>
+                        <option value="Cortado" </option>
+                        <option value="Ristretto" </option>
+                        <option value="Other" </option>
+                        <option value="Tea" </option>
 
 
-                </datalist>
+                    </datalist>
 
-            </div>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-
-            <!-- grind level -->
-            <div class="mb-3">
-                <div class="input-group">
-                    <label for="grindLevel" class="form-label mb-3 mr-1">Grind level:&nbsp; </label> <em
-                        id="rangeValLabel">
-                        <%if (lastDrink.grindLevel) { %>
-                            <%=lastDrink.grindLevel %>
-                                <% } %>
-                    </em>
-                    <input class="form-range" type="range" max="10" min="-10"
-                        oninput="document.getElementById('rangeValLabel').innerHTML = this.value;" step="0.25"
-                        id="grindLevel" name="drink[grindLevel]" value="<%=lastDrink.grindLevel || 0 %>">
                 </div>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-            </div>
 
-            <!-- weight -->
-            <label class="form-label my-3" for="drinkWeight">Weight</label>
-            <div class="mb-3 input-group input-group-lg"
-                oninput="document.querySelector('#advanced').classList.remove('d-none')">
-
-                <input class="form-control" type="number" step="0.01" min="0" id="drinkWeight" placeholder="30"
-                    name="drink[weight]"> <span class="input-group-text" id="basic-addon1">g</span>
-            </div>
-            <!-- tamping level -->
-            <div class="mb-3">
-                <div class="input-group">
-                    <label for="tampingLevel" class="form-label">Tamping level (Light - Medium -
-                        Heavy)</label>
-                    <input type="range" list="levels" class="form-range" min="0" max="2" id="tampingLevel"
-                        name="drink[tampingLevel]" value="<%=lastDrink.grindLevel || 1 %>">
-                    <datalist id="levels">
-                        <option value="0" label="Light">Light</option>
-                        <option value="1" label="Medium">Medium</option>
-                        <option value="2" label="Heavy">Heavy</option>
-                    </datalist>
-
-                </div>
-                <!-- comment -->
-
+                <!-- grind level -->
                 <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" type="text" id="description" name="drink[comment]"
-                        oninput="document.querySelector('#advanced').classList.remove('d-none')"></textarea>
+                    <div class="input-group">
+                        <label for="grindLevel" class="form-label mb-3 mr-1">Grind level:&nbsp; </label> <em
+                            id="rangeValLabel">
+                            <%if (lastDrink.grindLevel) { %>
+                                <%=lastDrink.grindLevel %>
+                                    <% } %>
+                        </em>
+                        <input class="form-range" type="range" max="10" min="-10"
+                            oninput="document.getElementById('rangeValLabel').innerHTML = this.value;" step="0.25"
+                            id="grindLevel" name="drink[grindLevel]" value="<%=lastDrink.grindLevel || 0 %>">
+                    </div>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
 
-                <!-- stopwatch -->
-                <p>Shot length </p>
+                <!-- weight -->
+                <label class="form-label my-3" for="drinkWeight">Weight</label>
+                <div class="mb-3 input-group input-group-lg"
+                    oninput="document.querySelector('#advanced').classList.remove('d-none')">
 
-                <div class="input-group stopwatch">
-                    <input class="form-control" type="text" id="stopwatchDisplay"
-                        oninput="document.querySelector('#advanced').classList.remove('d-none')"
-                        aria-label="infusion Length in seconds" name="drink[infusionLength]" placeholder="28:50 seconds"
-                        value="" />
-                    <button type="button" id="playButton" class="btn btn-outline-success">Start</button>
-                    <button type="button" id="pauseButton" class="btn btn-outline-danger"
-                        style="display: none;">Stop</button>
-                    <button type="button" id="resetButton" class="btn btn-sm btn-outline-warning">Reset</button>
-
+                    <input class="form-control" type="number" step="0.01" min="0" id="drinkWeight" placeholder="30"
+                        name="drink[weight]"> <span class="input-group-text" id="basic-addon1">g</span>
                 </div>
-            </div>
-
-            <script src='/javascripts/stopwatch.js'></script>
-
-            <div id="advanced" class="d-none">
-                <!-- beverage weight -->
-                <label class="form-label mb-3" for="drinkTotalWeight" id="drinkTotalWeightLabel">Beverage total
-                    weight:</label>
-                <div class="mb-3 input-group">
-
-                    <input class="form-control" type="number" min="0" id="drinkTotalWeight" placeholder="30"
-                        name="drink[drinkWeight]"> <span class="input-group-text" id="basic-addon1">g</span>
-                </div>
-
-
-
-                <!-- temperature -->
+                <!-- tamping level -->
                 <div class="mb-3">
                     <div class="input-group">
-                        <label for="Temperature" class="form-label mb-3 ">Temperature:
-                        </label> <span id="rangeTempLabel" class=" mx-1">
-                            <% if (lastDrink.temperature !="88.5" ) { %>
-                                <%=lastDrink.temperature || "" %>
-                                    <% } %>
-                        </span>
-                        <input class="form-range " type="range" max="97" min="80"
-                            oninput="document.getElementById('rangeTempLabel').innerHTML = this.value;" step="0.5"
-                            id="temperaturePicker" name="drink[temperature]" value="<%=lastDrink.temperature || "" %>">
-                    </div>
+                        <label for="tampingLevel" class="form-label">Tamping level (Light - Medium -
+                            Heavy)</label>
+                        <input type="range" list="levels" class="form-range" min="0" max="2" id="tampingLevel"
+                            name="drink[tampingLevel]" value="<%=lastDrink.grindLevel || 1 %>">
+                        <datalist id="levels">
+                            <option value="0" label="Light">Light</option>
+                            <option value="1" label="Medium">Medium</option>
+                            <option value="2" label="Heavy">Heavy</option>
+                        </datalist>
 
-                    <!--next time note -->
+                    </div>
+                    <!-- comment -->
 
                     <div class="mb-3">
-                        <label class="form-label" for="nextTimeNote">Note for next cup (?)</label>
-                        <textarea class="form-control" type="text" id="nextTimeNote"
-                            name="drink[nextTimeNote]"></textarea>
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class="form-control" type="text" id="description" name="drink[comment]"
+                            oninput="document.querySelector('#advanced').classList.remove('d-none')"></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+
+                    <!-- stopwatch -->
+                    <p>Shot length </p>
+
+                    <div class="input-group stopwatch">
+                        <input class="form-control" type="text" id="stopwatchDisplay"
+                            oninput="document.querySelector('#advanced').classList.remove('d-none')"
+                            aria-label="infusion Length in seconds" name="drink[infusionLength]"
+                            placeholder="28:50 seconds" value="" />
+                        <button type="button" id="playButton" class="btn btn-outline-success">Start</button>
+                        <button type="button" id="pauseButton" class="btn btn-outline-danger"
+                            style="display: none;">Stop</button>
+                        <button type="button" id="resetButton" class="btn btn-sm btn-outline-warning">Reset</button>
 
                     </div>
                 </div>
-                <button class="btn btn-secondary">Add</button>
-        </form>
-    </div>
+
+                <script src='/javascripts/stopwatch.js'></script>
+
+                <div id="advanced" class="d-none">
+                    <!-- beverage weight -->
+                    <label class="form-label mb-3" for="drinkTotalWeight" id="drinkTotalWeightLabel">Beverage
+                        total
+                        weight:</label>
+                    <div class="mb-3 input-group">
+
+                        <input class="form-control" type="number" min="0" id="drinkTotalWeight" placeholder="30"
+                            name="drink[drinkWeight]"> <span class="input-group-text" id="basic-addon1">g</span>
+                    </div>
+
+
+
+                    <!-- temperature -->
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <label for="Temperature" class="form-label mb-3 ">Temperature:
+                            </label> <span id="rangeTempLabel" class=" mx-1">
+                                <% if (lastDrink.temperature !="88.5" ) { %>
+                                    <%=lastDrink.temperature || "" %>
+                                        <% } %>
+                            </span>
+                            <input class="form-range " type="range" max="97" min="80"
+                                oninput="document.getElementById('rangeTempLabel').innerHTML = this.value;" step="0.5"
+                                id="temperaturePicker" name="drink[temperature]"
+                                value="<%=lastDrink.temperature || "" %>">
+                        </div>
+
+                        <!--next time note -->
+
+                        <div class="mb-3">
+                            <label class="form-label" for="nextTimeNote">Note for next cup (?)</label>
+                            <textarea class="form-control" type="text" id="nextTimeNote"
+                                name="drink[nextTimeNote]"></textarea>
+
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary">Add</button>
+            </form>
+        </div>
     </div>

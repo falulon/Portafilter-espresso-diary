@@ -43,7 +43,10 @@ a:hover {
 
 .list-group-flush > .coffee-type-card {  
       
-        box-shadow: 1px 1px 1px 0px #4E2C0B;;
+        box-shadow: 1px 1px 1px 0 #4E2C0B;
+        border-left: 15px #0b334e solid;       
+        /* border-top: 1px rgba(11, 51, 78, 0.6) solid;  */
+        border-radius: 2px 20px 20px 3px!important; 
     
 }
 
@@ -56,8 +59,14 @@ a:hover {
     background-color: #fffaf5;
 }
 .card-footer { 
-    background-color: rgba(240, 243, 239, 0.6);
+    background-color: rgba(245, 243, 239, 0.6);
 }
+
+.coffee-light-background, .card-footer { 
+    background-color: rgba(245, 243, 239, 0.4);
+}
+
+
 #espresso_cup {
     opacity: 0.9 ; 
 }

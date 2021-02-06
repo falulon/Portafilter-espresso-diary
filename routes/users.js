@@ -9,6 +9,12 @@ router.get('/about', (req, res)=> {
   res.render('about');
 })
 
+
+router.get('/', (req, res)=> {
+  res.render('users/landing');
+})
+
+
 router.route('/register')
   .get(users.showRegister) 
   .post( users.addNew )

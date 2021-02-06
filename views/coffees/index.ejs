@@ -3,7 +3,7 @@
 
     <div class="row justify-content-center">
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3 order-last order-md-first">
             <img src='https://images.unsplash.com/photo-1589634601264-4bdab4b07ec1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80'
                 class="img-fluid rounded" alt=" new coffee bag">
         </div>
@@ -37,7 +37,8 @@
 
 
                         <% for (let coffee of coffees) { %>
-                            <li class="list-group-item coffee-type-card rounded-3"><a href="/coffees/<%= coffee._id %>">
+                            <li class="list-group-item coffee-type-card rounded-3 shadow "><a
+                                    href="/coffees/<%= coffee._id %>">
                                     <h3>
                                         <%= coffee.name %>
                                     </h3>
@@ -54,7 +55,7 @@
                             <% } %>
             </ul>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 mb-3">
             <a href="/coffees/new" class="btn btn-secondary">New Beans</a>
 
         </div>
