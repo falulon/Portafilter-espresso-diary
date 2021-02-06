@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const users = require('../controllers/users');
 const forgotPass = require('../controllers/forgotPassword');
+const {isFreshUser} = require('../middleware');
 
 
 router.get('/about', (req, res)=> {
@@ -10,9 +11,10 @@ router.get('/about', (req, res)=> {
 })
 
 
-router.get('/', (req, res)=> {
+router.get('/',isFreshUser, (req, res)=> {
   res.render('users/landing');
 })
+
 
 
 router.route('/register')

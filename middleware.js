@@ -36,6 +36,14 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
+module.exports.isFreshUser = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        req.session.returnTo = req.originalUrl
+        return res.redirect('/coffees');
+    }
+    next();
+}
+
 
 
 module.exports.isUser = async (req, res, next) => {
