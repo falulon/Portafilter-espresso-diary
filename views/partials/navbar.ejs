@@ -1,0 +1,26 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark brown-background">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">PORTAFILTER</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <div class="navbar-nav">
+                <a class="nav-link" href="/coffees">BEANS</a>
+                <a class="nav-link" href="/drinks">DIARY</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/about">ABOUT</a>
+
+                <% if(!currentUser) {%>
+                    <a class="nav-link" href="/login">LOGIN</a>
+                    <a class="nav-link" href="/register">SIGN UP</a>
+                    <% } else {%>
+                        <a class="nav-link" href="/logout">LOGOUT</a>
+                        <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

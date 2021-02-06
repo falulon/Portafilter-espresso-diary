@@ -1,0 +1,149 @@
+<% layout('layouts/boilerplate')%>
+    <div class="row justify-content-center">
+
+
+        <div class="col-md-8">
+
+            <img src="https://images.unsplash.com/photo-1514483935006-b311818acf27?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                alt="coffee accident" class="img-fluid">
+        </div>
+
+        <div class="col-md-4 my-3">
+            <h2>Edit Drink</h2>
+
+            <form action="/drinks/<%=drink.id%>?_method=PUT" method="POST" novalidate class=" validated-form">
+
+
+
+
+                <!-- drink type -->
+                <div class="mb-3">
+                    <label class="form-label my-2" for="body">
+                        <%=drink.type %> &nbsp; <%=drink.coffeeBag.name %>
+                    </label>
+                    <input class="form-control" type="hidden" name="drink[type]"" id=" drinkName" list="beverages"
+                        value="<%=drink.type%>" placeholder="Ristretto" required
+                        oninput="document.getElementById('drinkWeightLabel').innerHTML = this.value + ' weight (grams)'">
+                    <datalist id="beverages">
+                        <option value="Espresso" </option>
+                        <option value="Double Espresso" </option>
+                        <option value="Cappucino" </option>
+                        <option value="Americano" </option>
+                        <option value="Mocha" </option>
+                        <option value="Latte" </option>
+                        <option value="Filter" </option>
+                        <option value="Macchiato" </option>
+                        <option value="AeroPress" </option>
+                        <option value="French Press" </option>
+                        <option value="Cold Brew" </option>
+                        <option value="Chemex" </option>
+                        <option value="V60" </option>
+                        <option value="Turkish" </option>
+                        <option value="Cortado" </option>
+                        <option value="Ristretto" </option>
+
+                    </datalist>
+
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <!-- grind level -->
+                <div class="mb-3">
+                    <div class="input-group">
+                        <label for="grindLevel" class="form-label mb-3 mr-1">Grind level:
+                        </label> <em id="rangeValLabel">
+
+                        </em>
+                        <input class="form-range" type="range" max="10" min="-10"
+                            oninput="document.getElementById('rangeValLabel').innerHTML = this.value;" step="0.25"
+                            id="grindLevel" name="drink[grindLevel]" value="<%=drink.grindLevel %>">
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+
+                    <!-- weight -->
+                    <div class="mb-3">
+                        <label class="form-label mb-3" for="drinkWeight">Weight (grams)</label>
+                        <input class="form-control mb-3" type="number" step="0.01" min="0" id="drinkWeight"
+                            value="<%= drink.weight %>" name="drink[weight]">
+
+                        <!-- tamping level -->
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <label for="tampingLevel" class="form-label">Tamping level (Light - Medium -
+                                    Heavy)</label>
+                                <input type="range" value="<%= drink.tampingLevel %>" class="form-range" min="0" max="2"
+                                    id="tampingLevel" name="drink[tampingLevel]">
+
+
+                            </div>
+                            <!-- comment -->
+
+                            <div class="mb-3">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" type="text" id="description"
+                                    name="drink[comment]"><%= drink.comment %> </textarea>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                            <!-- stopwatch -->
+                            <div class="stopwatch">
+                                Shot length:
+                                <input class="mx-2" type="text" id="stopwatchDisplay" name="drink[infusionLength]"
+                                    maxlength="10" size="8" value="<%=drink.infusionLength %>" />seconds
+                            </div>
+                        </div>
+
+
+                        <!-- beverage weight -->
+                        <div class="mb-3">
+                            <label class="form-label mb-3" for="drinkTotalWeight" id="drinkTotalWeightLabel">Beverage
+                                total
+                                weight:</label>
+                            <input class="form-control mb-3" value="<%= drink.drinkWeight %>" type="number" min="0"
+                                id="drinkTotalWeight" name="drink[drinkWeight]">
+
+
+
+                            <!-- temperature -->
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <label for="Temperature" class="form-label mb-3 ">Temperature:
+                                    </label> <span id="rangeTempLabel" class=" mx-1">
+                                        <%=drink.temperature || 88 %>
+                                    </span>
+                                    <input class="form-range " type="range" max="97" min="80"
+                                        oninput="document.getElementById('rangeTempLabel').innerHTML = this.value;"
+                                        step="0.5" id="temperaturePicker" name="drink[temperature]"
+                                        value="<%=drink.temperature || 88 %>">
+                                </div>
+
+                                <!--next time note -->
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="nextTimeNote">Note for next cup (?)</label>
+                                    <textarea class="form-control" type="text" id="nextTimeNote"
+                                        name="drink[nextTimeNote]"><%= drink.nextTimeNote%></textarea>
+
+                                </div>
+
+                                <button class="btn btn-success">Save</button>
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <div class="col-2">
+        <form action="/drinks/<%=drink.id%>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+
+    </div>

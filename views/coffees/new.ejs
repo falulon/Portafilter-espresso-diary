@@ -1,0 +1,62 @@
+<% layout('layouts/boilerplate')%>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h1>New Beans</h1>
+                <form action="/coffees" method="POST" novalidate class="validated-form">
+                    <div class=" mb-3">
+                        <label class="form-label" for="title">Type</label>
+                        <input class="form-control" type="text" id="title" name="coffee[name]"
+                            placeholder="e.g. Ethiopia Yirgacheffe (Fair Trade)" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="weight">Weight (grams)</label>
+                        <input class="form-control" type="number" min="0" id="weight" placeholder="250"
+                            name="coffee[weight]" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+
+
+                    <div class="btn-group my-1" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="coffee[roastLevel]" value="0" id="roastBtnradio1"
+                            autocomplete="off" checked>
+                        <label class="btn btn-outline-secondary" for="roastBtnradio1">Light</label>
+
+                        <input type="radio" class="btn-check" name="coffee[roastLevel]" value="1" id="roastBtnradio2"
+                            autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="roastBtnradio2">Medium</label>
+
+                        <input type="radio" class="btn-check" name="coffee[roastLevel]" value="2" id="roastBtnradio3"
+                            autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="roastBtnradio3">Dark</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="date">Roast date: </label>
+                        <input class="form-control" type="date" min="2021-01-01" step="1" id="date" name="coffee[date]"
+                            required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <button class="btn btn-success">Add Coffee</button>
+                    </div>
+                </form>
+
+                <a href="/coffees">Back to Coffee Beans</a>
+            </div>
+            <div class="col">
+                <img src='https://images.unsplash.com/photo-1515471897120-85416077e011?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80'
+                    class="img-fluid" alt=" new coffee bag">
+            </div>
+        </div>
+
+    </div>
+    </div>

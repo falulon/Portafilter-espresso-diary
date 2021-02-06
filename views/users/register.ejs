@@ -1,0 +1,45 @@
+<% layout('layouts/loginplate')%>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <img src="/img/nathan-dumlao-r7uc-cqJy0Q-unsplash.webp" alt="coffee register image"
+                        class="card-img-top" />
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">Register</h5>
+                            </div>
+                            <div class="col">
+                                <div class="mt-2 float-end">Or, <a href="/login">Log
+                                        in</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <form action="/register" method="POST" class="validated-form" novalidate>
+                            <div class="input-group mb-3">
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-control" type="email" id="email" name="email" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Set Password</label>
+                                <input class="form-control" type="password" id="password" name="password" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary btn-block float-end">Sign Up</button>
+                        </form>
+                        <span id="passwordHelpInline" class="form-text">I accept the Terms and
+                            Conditions</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,85 @@
+<% layout('layouts/boilerplate')%>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-1">
+                <h1 class="card-title">
+                    <%= coffee.name %>
+                </h1>
+                <p>
+                    <%= coffee.weight %> grams
+                </p>
+                <form action="/coffees/<%=coffee._id%>?_method=PUT" method="POST" novalidate class=" validated-form">
+
+                    <label class="form-label" for="title">Type</label>
+                    <input class="form-control" type="text" id="title" name="coffee[name]" value="<%=coffee.name  %> "
+                        required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+
+                    <div class="btn-group my-3" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="coffee[roastLevel]" value="0" id="roastBtnradio1"
+                            autocomplete="off" checked>
+                        <label class="btn btn-outline-secondary" for="roastBtnradio1">Light</label>
+
+                        <input type="radio" class="btn-check" name="coffee[roastLevel]" value="1" id="roastBtnradio2"
+                            autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="roastBtnradio2">Medium</label>
+
+                        <input type="radio" class="btn-check" name="coffee[roastLevel]" value="2" id="roastBtnradio3"
+                            autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="roastBtnradio3">Dark</label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="weight">Weight (grams)</label>
+                        <input class="form-control" type="number" min="0" id="weight" min="0"
+                            value="<%= coffee.weight %>" name="coffee[weight]" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Enter a whole number, chuchem!
+                        </div>
+                    </div>
+                    <p>Roast date: <%= (coffee.date).toLocaleDateString('pt-PT') %>
+                    </p>
+                    </label>
+
+
+
+                    <div class="d-flex bd-highlight mb-3">
+                        <div class="me-auto py-2 bd-highlight">
+                            <button class="btn btn-success">Save</button>
+                </form>
+            </div>
+            </form>
+
+            <div class="p-2 bd-highlight">
+                <form action="/coffees/archive/<%=coffee._id%>?_method=PUT" method="POST">
+                    <button class="btn btn-outline-secondary">Archive</button>
+                </form>
+            </div>
+            <div class="p-2 bd-highlight">
+                <form action="/coffees/<%=coffee._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-outline-danger">Delete</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="col-md-3 ">
+        <img src='https://images.unsplash.com/photo-1584736286179-e3d10ebcdc3e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=632&q=80'
+            class="img-fluid" alt=" new coffee bag">
+    </div>
+
+
+    <div class="col">
+        <a class="btn btn-sm btn-outline-secondary" href="/coffees">All Coffee Types</a>
+    </div>
+    </div>
+
+    </div>

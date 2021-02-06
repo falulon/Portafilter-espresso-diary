@@ -1,0 +1,63 @@
+
+.brown-background, .bg-dark {
+    background-color: #261505!important; 
+    
+    }
+    
+.navbar-dark, .navbar-brand{
+    color: #fff2e5!important;
+    }
+.coffee {
+    color: #3b291d; 
+}
+
+h1, h2, h3 { 
+    color: #4e2c0b;
+}
+
+.danger-beige { 
+    background-color: #ffbf80;
+}
+
+a {
+    color: #0b334e;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0b334e;
+}
+
+.btn-outline-secondary {
+    border-color: #0b334e;
+}
+
+.btn-secondary {
+   background-color:  #4d2b13;
+}
+.btn-secondary:hover, .btn-outline-secondary:hover  {
+    background-color:  #4d2b13;
+
+    /* background-color: #0f4970; */
+}
+
+.list-group-flush > .coffee-type-card {  
+      
+        box-shadow: 1px 1px 1px 0px #4E2C0B;;
+    
+}
+
+.drink-info:first-child {  
+      
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
+.card-header { 
+    background-color: #fffaf5;
+}
+.card-footer { 
+    background-color: rgba(240, 243, 239, 0.6);
+}
+#espresso_cup {
+    opacity: 0.9 ; 
+}

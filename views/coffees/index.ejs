@@ -1,0 +1,122 @@
+<% layout('layouts/boilerplate')%>
+
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-4 mb-3">
+            <img src='https://images.unsplash.com/photo-1589634601264-4bdab4b07ec1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80'
+                class="img-fluid rounded" alt=" new coffee bag">
+        </div>
+
+
+
+        <div class="col-md-6">
+            <div class="row justify-content-between">
+                <div class="col">
+                    <h1>Coffee Beans</h1>
+                </div>
+                <% if (coffees.length>0) { %>
+                    <div class="col d-md-none">
+                        <a class="btn btn-outline-secondary float-end" href="/drinks">Diary</a>
+                    </div>
+                    <% } %>
+            </div>
+
+            <ul class="list-group my-5 list-group-flush">
+
+                <% if (coffees.length<1) { %>
+
+                    <li class="list-group-item coffee-type-card rounded-3"> <a href="/coffees/new">
+                            <h3>
+                                Add a coffee bag to start!
+                            </h3>
+                        </a>
+                    </li>
+                    <% } %>
+
+
+
+                        <% for (let coffee of coffees) { %>
+                            <li class="list-group-item coffee-type-card rounded-3"><a href="/coffees/<%= coffee._id %>">
+                                    <h3>
+                                        <%= coffee.name %>
+                                    </h3>
+                                    <p>
+                                        <%= coffee.weight %> grams
+                                    </p>
+                                    <p>Roasted <%= coffee.ageInDays %> days ago
+                                            <img src="/icons/Portafilter-color_icon.png" alt="espresso icon"
+                                                height="35px" class="float-end" id="espresso_cup">
+                                    </p>
+                                </a>
+
+                            </li>
+                            <% } %>
+            </ul>
+        </div>
+        <div class="col-md-2">
+            <a href="/coffees/new" class="btn btn-secondary">New Beans</a>
+
+        </div>
+
+
+    </div>
+    <% if(coffeesArchived.length>0) { %>
+        <div class="row justify-content-center mt-5">
+
+            <div class="col-md-4 mb-3">
+                <img src='https://images.unsplash.com/photo-1465176728568-7da7e336b1e9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80'
+                    class="img-fluid rounded" alt="old coffee bag">
+            </div>
+
+
+            <div class="col-md-6">
+                <ul class="list-group my-5 list-group-flush">
+                    <% for (let coffee of coffeesArchived) { %>
+
+                        <h3>
+                            <span class="text-muted text-decoration-none" data-bs-toggle="collapse"
+                                href="#A<%=coffee._id%>" aria-expanded="false" aria-controls="archived coffee">
+                                <%=coffee.name%>
+
+                            </span>
+                        </h3>
+                        <span class="bg-light text-dark me-auto">
+                            <% if (coffee.drinks.length> 1) { %>
+                                <%=coffee.drinks.length%> Coffees &nbsp;
+                                    <% } %>
+                        </span>
+                        <p>
+                            Roasted: <%= (coffee.date).toLocaleDateString('pt-PT') %>
+                        </p>
+
+                        <div class="row row-cols-sm-auto g-1 d-flex justify-content-between border-bottom mb-3 ">
+                            <div class=" col-10"></div>
+                            <div class="col py-2 ">
+                                <div class="collapse multi-collapse " id="A<%=coffee._id%>">
+                                    <div class="row row-cols-auto g-3 align-items-end">
+                                        <div class="col-sm-10 col-6 mb-3"></div>
+
+                                        <form action="/coffees/makeActive/<%=coffee._id%>?_method=PUT" method="POST">
+                                            <button class="btn btn-sm btn-outline-secondary">Restore</button>
+                                        </form>
+                                        <form action="/coffees/<%=coffee._id%>?_method=DELETE" method="POST">
+                                            <button class="btn btn-sm btn-outline-danger">X</button>
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </li>
+                        <% } %>
+
+                </ul>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+
+        </div>
+        <% } %>
