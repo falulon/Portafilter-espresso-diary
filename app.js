@@ -49,14 +49,14 @@ const sessionConfig = {
     name: 'bamba',
     secret,
     resave: false,
-    saveUninitialized: true,
-    // cookie: {
-    //     httpOnly: true,
-    //     // secure: true,
-    //     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-    //     maxAge: 1000 * 60 * 60 * 24 * 7
-    // }
-}
+    // saveUninitialized: true,
+    // // cookie: {
+    // //     httpOnly: true,
+    // //     // secure: true,
+    // //     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+    // //     maxAge: 1000 * 60 * 60 * 24 * 7
+    // // }
+// }
 
 app.use(session(sessionConfig));
 
@@ -124,7 +124,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-
-app.listen(3000, ()=>{
-    console.log('Serving on port 3000')
+const port = procee.env.PORT || 3000;
+app.listen(port, ()=>{
+    console.log('Serving on port', port)
 });
