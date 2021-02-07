@@ -217,6 +217,7 @@
     <script>
         window.onload = timestamper()
         function timestamper() {
+            const drinkTime = document.querySelector('#timeField');
             const timeOffset = (new Date()).getTimezoneOffset() / 60
             const dateUtc = new Date()
             const utcHour = dateUtc.getHours() - timeOffset;
