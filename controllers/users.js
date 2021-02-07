@@ -20,7 +20,7 @@ async (req,res) => {
     
     req.login(registeredUser, err => {
         if (err) return next(err);
-        req.flash('success', 'Welcome!' );
+        // req.flash('success', 'Welcome!' );
     res.redirect('/coffees/');
     });
     
@@ -38,7 +38,7 @@ module.exports.showLogin =
 
 module.exports.login =
 (req, res)=> {
-    req.flash('success', 'Welcome back!');
+    // req.flash('success', 'Welcome back!');
     const redirectUrl = req.session.returnTo || '/coffees/';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
