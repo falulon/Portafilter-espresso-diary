@@ -13,7 +13,7 @@ catchAsync(
 async (req,res) => {
     try{
     const {email, password} = req.body;
-    const username = email;
+    const username = email.trim();
     const city = await getIP.getCity();
     const user = new User ({username, email, password, city});
     const registeredUser = await User.register(user, password);

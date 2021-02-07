@@ -101,7 +101,7 @@
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-
+                <input type="hidden" id="timeField" name="drink[date]">
                 <!-- grind level -->
                 <div class="mb-3">
                     <div class="input-group">
@@ -213,3 +213,12 @@
             </form>
         </div>
     </div>
+
+    <script>
+        window.onload = timestamper()
+        function timestamper() {
+            const drinkTime = document.querySelector('#timeField');
+            drinkTime.value = Date();
+        }
+
+    </script>
