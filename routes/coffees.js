@@ -1,7 +1,6 @@
 const express = require('express');
 var router = express.Router({mergeParams: true});
 const catchAsync = require('../utils/catchAsync');
-// const ExpressError = require('../utils/ExpressError');
 const coffees = require('../controllers/coffees');
 const {validateCoffeeType, isLoggedIn, isUser} = require('../middleware');
 

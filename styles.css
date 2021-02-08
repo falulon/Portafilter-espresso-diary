@@ -1,14 +1,14 @@
-
-
-  .brown-background, .bg-dark {
-        background-color: #261505!important; 
-        
-        }
-        
-    .navbar-dark, .navbar-brand{
-        color: #fff2e5!important;
-        }
-
+body {
+    min-width: 360px;
+}
+.brown-background, .bg-dark {
+    background-color: #261505!important; 
+    
+    }
+    
+.navbar-dark, .navbar-brand{
+    color: #fff2e5!important;
+    }
 .coffee {
     color: #3b291d; 
 }
@@ -56,7 +56,10 @@ a:hover {
       
     border-top: 1px solid rgba(0,0,0,.125);
 }
+.card {
+    min-width: 360px;
 
+}
 .card-header { 
     background-color: #fffaf5;
 }
