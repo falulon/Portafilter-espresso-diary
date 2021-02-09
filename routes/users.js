@@ -12,7 +12,7 @@ router.get('/about', (req, res)=> {
 
 
 router.get('/',isFreshUser, (req, res)=> {
-  sendFile('index.html');
+  sendFile(__dirname + '/index.html');
   // res.render('users/landing');
 })
 
