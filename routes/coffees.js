@@ -9,6 +9,9 @@ router.route('/')
     .get(isLoggedIn, catchAsync(coffees.index))
     .post(validateCoffeeType, isLoggedIn, catchAsync(coffees.add))
 
+router.route('/showall')
+    .get(isLoggedInAndRegistered, catchAsync(coffees.index))
+    
 router.get('/new', isLoggedIn, coffees.new)
 router.get('/archive', isLoggedIn, catchAsync (coffees.showArchive))
 router.put('/makeActive/:id',  isLoggedIn, catchAsync (coffees.unArchive))

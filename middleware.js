@@ -36,6 +36,15 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
+module.exports.isLoggedInAndRegistered = (req, res, next) => {
+    if (!req.isAuthenticated()) {
+        req.session.returnTo = req.originalUrl
+        return res.redirect('/register');
+    }
+    next();
+}
+
+
 module.exports.isFreshUser = (req, res, next) => {
     if (req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl
