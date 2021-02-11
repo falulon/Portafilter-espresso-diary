@@ -7,105 +7,107 @@
             </div>
 
             <div class="col-md-4 order-1 order-md-2">
-                <% if (drinks.length<1) { %>
+                <div class="clearfix">
+                    <% if (drinks.length<1) { %>
 
-                    <div class="list-group-item coffee-type-card">
-                        <a href="/coffees/">
-                            <img src="/img/coffee_bag.png" alt="beans bag" class="float-end img-fluid">
-                            <h3>
-                                Select beans, then add a brew to start your diary!
-                            </h3>
-                        </a>
-                    </div>
-                    <% } %>
+                        <div class="list-group-item coffee-type-card">
+                            <a href="/coffees/">
+                                <img src="/img/coffee_bag.png" alt="beans bag"
+                                    class="float-end img-fluid col-4 col-md-6 ">
+                                <h4>
+                                    Select beans, then add a brew to start your diary!
+                                </h4>
+                            </a>
+                        </div>
+                        <% } %>
+
+                </div>
 
 
+                <% for (let drink of drinks.reverse()) { %>
+                    <div class="card mb-4" style="max-width: 540px;">
+                        <div class="card-header">
+                            <% if ( drink.coffeeBag ) { %>
+                                <%= drink.coffeeBag.name %>
+                                    <% } %>
+                        </div>
 
-                        <% for (let drink of drinks.reverse()) { %>
-                            <div class="card mb-4" style="max-width: 540px;">
-                                <div class="card-header">
-                                    <% if ( drink.coffeeBag ) { %>
-                                        <%= drink.coffeeBag.name %>
-                                            <% } %>
-                                </div>
+                        <div class="row no-gutters ">
+                            <div class="col col-md-12">
+                                <img class="card-img-top" src="<%=drink.img %> " alt="">
 
-                                <div class="row no-gutters ">
-                                    <div class="col col-md-12">
-                                        <img class="card-img-top" src="<%=drink.img %> " alt="">
-
-                                    </div>
-                                    <div class="col col-md-12 d-flex justify-content-md-center" flex-wrap">
-                                        <h5 class="card-title align-self-center text-md-center py-2">
-                                            <%= drink.type %>
-                                                <% if (drink.drinkWeight> 1) { %>
-                                                    (<%= drink.drinkWeight %>g)
-                                                        <% } %>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="row no-gutters">
-                                    <div class="card-body pt-0 pb-1">
-                                        <ul class="list-group list-group-flush drink-info">
-                                            <% if (drink.weight) { %>
-                                                <li class="list-group-item">
-                                                    <%= drink.weight %> grams
-                                                        <% if (drink.drinkWeight> 1) { %>
-                                                            in &nbsp; » &nbsp; <%= drink.drinkWeight %> grams out <span
-                                                                    class="float-end"> 1:<%= (drink.ratio) %> </span>
-                                                                <% } %>
-                                                </li>
-                                                <% } %>
-
-                                                    <% if (drink.tampingLevel) { %>
-                                                        <li class="list-group-item">
-                                                            Tamping : <%= drink.tampingLevelText %>
-                                                        </li>
-                                                        <% } if ((drink.infusionLength) || (drink.temperature !=88.5) )
-                                                            { %>
-                                                            <li class="list-group-item d-flex justify-content-between">
-                                                                <% if (drink.infusionLength) { %> <span>
-                                                                        ⌚ <%= drink.infusionLengthRound%> seconds
-                                                                    </span>
-                                                                    <% } if (drink.temperature !=88.5) { %>
-                                                                        <span>
-                                                                            <%= drink.temperature %> 🌡
-                                                                        </span>
-                                                            </li>
-                                                            <% } %>
-                                                                <% } if (drink.grindLevel) { %>
-                                                                    <li class="list-group-item">
-                                                                        Grind Level: <%= drink.grindLevel %>
-                                                                    </li>
-                                                                    <% } if (drink.tampLevel) { %>
-                                                                        <li class="list-group-item">
-                                                                            <%= drink.tampLevel %>
-                                                                        </li>
-                                                                        <% } if (drink.nextTimeNote) { %>
-                                                                            <li class="list-group-item">
-                                                                                Next time: <%= drink.nextTimeNote %>
-                                                                            </li>
-                                                                            <% } %>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="card-footer text-muted d-flex justify-content-between"> <span>
-                                        <%= drink.date.toString().substring(0,10)%>
-                                            <%= drink.date.toString().substring(15,21)%>
-                                    </span>
-                                    <span><a class="text-reset" href="/drinks/<%=drink.id%>/edit">Edit</a></span>
-                                </div>
                             </div>
-
-                            <% } %>
-                                <div>
-                                    <% if (drinks.length>1) { %>
-                                        <h6><span class="badge bg-secondary">
-                                                <%=drinks.length %>
-                                            </span>
-                                            in total</h6>
+                            <div class="col col-md-12 d-flex justify-content-md-center" flex-wrap">
+                                <h5 class="card-title align-self-center text-md-center py-2">
+                                    <%= drink.type %>
+                                        <% if (drink.drinkWeight> 1) { %>
+                                            (<%= drink.drinkWeight %>g)
+                                                <% } %>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="card-body pt-0 pb-1">
+                                <ul class="list-group list-group-flush drink-info">
+                                    <% if (drink.weight) { %>
+                                        <li class="list-group-item">
+                                            <%= drink.weight %> grams
+                                                <% if (drink.drinkWeight> 1) { %>
+                                                    in &nbsp; » &nbsp; <%= drink.drinkWeight %> grams out <span
+                                                            class="float-end"> 1:<%= (drink.ratio) %> </span>
+                                                        <% } %>
+                                        </li>
                                         <% } %>
-                                </div>
+
+                                            <% if (drink.tampingLevel) { %>
+                                                <li class="list-group-item">
+                                                    Tamping : <%= drink.tampingLevelText %>
+                                                </li>
+                                                <% } if ((drink.infusionLength) || (drink.temperature !=88.5) ) { %>
+                                                    <li class="list-group-item d-flex justify-content-between">
+                                                        <% if (drink.infusionLength) { %> <span>
+                                                                ⌚ <%= drink.infusionLengthRound%> seconds
+                                                            </span>
+                                                            <% } if (drink.temperature !=88.5) { %>
+                                                                <span>
+                                                                    <%= drink.temperature %> 🌡
+                                                                </span>
+                                                    </li>
+                                                    <% } %>
+                                                        <% } if (drink.grindLevel) { %>
+                                                            <li class="list-group-item">
+                                                                Grind Level: <%= drink.grindLevel %>
+                                                            </li>
+                                                            <% } if (drink.tampLevel) { %>
+                                                                <li class="list-group-item">
+                                                                    <%= drink.tampLevel %>
+                                                                </li>
+                                                                <% } if (drink.nextTimeNote) { %>
+                                                                    <li class="list-group-item">
+                                                                        Next time: <%= drink.nextTimeNote %>
+                                                                    </li>
+                                                                    <% } %>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-muted d-flex justify-content-between"> <span>
+                                <%= drink.date.toString().substring(0,10)%>
+                                    <%= drink.date.toString().substring(15,21)%>
+                            </span>
+                            <span><a class="text-reset" href="/drinks/<%=drink.id%>/edit">Edit</a></span>
+                        </div>
+                    </div>
+
+                    <% } %>
+                        <div>
+                            <% if (drinks.length>1) { %>
+                                <h6><span class="badge bg-secondary">
+                                        <%=drinks.length %>
+                                    </span>
+                                    in total</h6>
+                                <% } %>
+                        </div>
             </div>
         </div>
 

@@ -22,20 +22,21 @@
         integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
         crossorigin="anonymous"></script>
 
-    <body class="d-flex flex-column">
+    <body class="d-flex flex-column vh-100">
         <%- include('../partials/navbar')%>
-
-
-            <main class="container mt-3 ">
-                <%- include('../partials/flash')%>
-
-                    <%- body %>
-            </main>
-
-
-
-            <script src='/javascripts/validateForms.js'></script>
             <%- include('../partials/navbar_mobile')%>
+
+
+
+                <main class="container mt-3 ">
+                    <%- include('../partials/flash')%>
+
+                        <%- body %>
+                </main>
+
+
+
+                <script src='/javascripts/validateForms.js'></script>
 
     </body>
 
