@@ -1,15 +1,28 @@
-
-
-
-.navbar-dark, .navbar-brand{
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+.navbar-dark, .navbar-brand {
 color: #fff2e5!important; 
 }
- .brown-background, .bg-dark {
-    
-    background-color: rgba(38, 21, 5, 1)!important; 
 
+.nav-link-mobile {
+    color: rgba(255,255,255,.75)!important; 
+    padding-top: 15px;
     }
+ .brown-background, .bg-dark {
   
+    background-color: rgba(38, 21, 5, 0.8)!important; 
+ }
+
+ 
+ body {
+    background-image: linear-gradient(rgba(255, 253, 253, 1), rgba(255, 255, 255, 1));
+    /* url("https://images.unsplash.com/photo-1509785307050-d4066910ec1e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1228&q=80"); */
+        /* url("../img/janko-ferlic-h9Iq22JJlGk-unsplash.jpg"); */
+
+    background-size: cover; 
+
+     /* background-color: #fffdfd;  */
+      }
+
 .coffee {
     color: #3b291d; 
 }
@@ -37,7 +50,9 @@ a:hover {
 
 .btn-secondary {
    background-color:  #4d2b13;
+   color: #fff2e5; 
 }
+
 .btn-secondary:hover, .btn-outline-secondary:hover  {
     background-color:  #4d2b13;
 
@@ -47,7 +62,11 @@ a:hover {
 .list-group-flush > .coffee-type-card {  
       
         box-shadow: 1px 1px 1px 0 #4E2C0B;
-        border-left: 15px #0b334e solid;       
+        /* border-left: 15px #0b334e solid;        */
+        /* border-left: 15px #3b291d solid;        */
+        border-left: 15px rgba(21, 11, 78, 1) solid; 
+
+
         /* border-top: 1px rgba(11, 51, 78, 0.6) solid;  */
         border-radius: 2px 20px 20px 3px!important; 
     
@@ -67,9 +86,15 @@ a:hover {
 
 .coffee-light-background, .card-footer { 
     background-color: rgba(245, 243, 239, 0.4);
+    box-shadow: 1px 1px 2px -2px rgba(21, 11, 78, 1) ;
+
 }
 
 
 #espresso_cup {
     opacity: 0.9 ; 
+}
+
+.card-top {
+    height: 30vh;
 }

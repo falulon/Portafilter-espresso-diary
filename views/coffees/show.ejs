@@ -1,7 +1,5 @@
 <% layout('layouts/boilerplate')%>
-    <div class="row justify-content-between mb-3">
-
-
+    <div class="row justify-content-between mb-3 d-none d-md-block">
         <div class="col">
             <a class="btn btn-sm btn-outline-secondary" href="../coffees">
                 < Bean Bags</a>
@@ -9,16 +7,16 @@
     </div>
     <div class="row ">
         <div class="col-md-2 order-0 order-md-1">
-            <div class="row justify-content-between mb-3 coffee-light-background">
+            <div class="row justify-content-between mb-2 coffee-light-background">
                 <hr class="d-block d-sm-none">
 
                 <div class="col">
                     <div class="row justify-content-between mb-1">
 
-                        <div class="col col-sm-auto ">
-                            <h2 class="card-title coffee">
+                        <div class="col col-sm-auto pt-md-2">
+                            <h5 class="card-title coffee">
                                 <%= coffee.name %>
-                            </h2>
+                            </h5>
                             <p class="text-muted">
                                 <%=coffee.roastLevelText %> roast
                             </p>
@@ -33,8 +31,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
-                            <p>
+                        <div class="col-9 col-md-9">
+                            <p class="">
                                 <% if (coffee.ageInDays> 1) { %> Days from Roast: <%= coffee.ageInDays %> <br>
                                         <% } %>
                                             Roast date: <%= (coffee.date).toLocaleDateString('pt-PT') %>
@@ -45,12 +43,14 @@
                                                 </div>
                             </p>
                         </div>
-                        <div class="col">
-                            <a href="/coffees/<%=coffee.id%>/edit" class="btn-sm btn-light float-end">Edit</a>
+                        <div class="col col-md-3 align-self-start">
+                            <a href="/coffees/<%=coffee.id%>/edit"
+                                class="btn-sm btn-light float-end shadow-sm ">Edit</a>
                         </div>
-
                     </div>
+
                 </div>
+
             </div>
             <!-- <div>
                 <hr class="d-block d-sm-none mt-1">
@@ -70,7 +70,7 @@
             <form action="/drinks/coffees/<%=coffee.id%>/" method="POST" novalidate class="mb-3 validated-form">
 
                 <!-- drink type -->
-                <label class="form-label my-2" for="body">What did you make? </label>
+                <label class="form-label my-2 d-none d-md-block" for="body">What did you make? </label>
                 <div class="mb-3 input-group input-group-lg">
                     <input class="form-control" type="text" name="drink[type] id=" drinkName" list="beverages"
                         placeholder="Ristretto" required
@@ -209,7 +209,9 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-secondary mt-3">Add</button>
+                <div class="d-grid col-6">
+                    <button class="btn btn-secondary mt-3">Add</button>
+                </div>
             </form>
         </div>
     </div>

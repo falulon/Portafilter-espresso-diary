@@ -1,10 +1,15 @@
 <% layout('layouts/boilerplate')%>
 
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-1">
 
-        <div class="col-md-4 mb-3 order-last order-md-first">
+        <div class="col-md-4 mb-3 order-last order-md-first d-none d-md-block">
             <img src='https://images.unsplash.com/photo-1589634601264-4bdab4b07ec1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80'
+                class="img-fluid rounded" alt=" new coffee bag">
+        </div>
+
+        <div class="col-md-4 mb-3 order-last order-md-first d-md-none mt-auto">
+            <img src='https://images.unsplash.com/photo-1590432621468-743ef06198e6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
                 class="img-fluid rounded" alt=" new coffee bag">
         </div>
 
@@ -12,19 +17,24 @@
 
         <div class="col-md-6">
             <div class="row justify-content-between">
-                <div class="col">
+                <div class="col-auto">
                     <h1>Coffee Beans</h1>
                 </div>
-                <% if (coffees.length>0) { %>
-                    <div class="col d-md-none">
-                        <a class="btn btn-outline-secondary float-end" href="/drinks">Diary</a>
-                    </div>
-                    <% } %>
+
+                <div class="col d-md-none">
+                    <% if (coffees.length>0) { %>
+                        <a class="btn btn-sm btn-outline-secondary float-end" href="/drinks">Diary</a>
+                        <% } %>
+                </div>
+                <!-- <div class="col-auto d-md-none">
+                    <a href="/coffees/new" class="btn btn-sm">Add</a>
+                </div> -->
+
             </div>
 
-            <ul class="list-group my-5 list-group-flush">
+            <ul class="list-group mt-3 mb-5 my-md-5 list-group-flush">
 
-                <% if (coffees.length<1) { %>
+                <!-- <% if (coffees.length<1) { %>
 
                     <li class="list-group-item coffee-type-card rounded-3"> <a href="/coffees/new">
                             <h3>
@@ -32,32 +42,40 @@
                             </h3>
                         </a>
                     </li>
+                    <% } %> -->
+
+
+
+                <% for (let coffee of coffees) { %>
+                    <li class="list-group-item coffee-type-card rounded-3 shadow "><a href="/coffees/<%= coffee._id %>">
+                            <h3>
+                                <%= coffee.name %>
+                            </h3>
+                            <p>
+                                <%= coffee.weight %> grams
+                            </p>
+                            <p>Roasted <%= coffee.ageInDays %> days ago
+                                    <img src="/icons/Portafilter-color_icon.png" alt="espresso icon" height="35px"
+                                        class="float-end" id="espresso_cup">
+                            </p>
+                        </a>
+
+                    </li>
                     <% } %>
-
-
-
-                        <% for (let coffee of coffees) { %>
-                            <li class="list-group-item coffee-type-card rounded-3 shadow "><a
-                                    href="/coffees/<%= coffee._id %>">
-                                    <h3>
-                                        <%= coffee.name %>
-                                    </h3>
-                                    <p>
-                                        <%= coffee.weight %> grams
-                                    </p>
-                                    <p>Roasted <%= coffee.ageInDays %> days ago
-                                            <img src="/icons/Portafilter-color_icon.png" alt="espresso icon"
-                                                height="35px" class="float-end" id="espresso_cup">
-                                    </p>
-                                </a>
-
-                            </li>
-                            <% } %>
             </ul>
         </div>
-        <div class="col-md-2 mb-3">
-            <a href="/coffees/new" class="btn btn-secondary">New Beans</a>
 
+        <div class="col-md-2 mb-3">
+            <div class="row justify-content-between">
+                <div class="col">
+                    <a href="/coffees/new" class="btn btn-sm btn-secondary">New Beans</a>
+                </div>
+                <!-- <% if (coffees.length>0) { %>
+                    <div class="col d-md-none">
+                        <a class="btn btn-sm btn-secondary float-end px-2" href="/drinks">Diary </a>
+                    </div>
+                    <% } %> -->
+            </div>
         </div>
 
 

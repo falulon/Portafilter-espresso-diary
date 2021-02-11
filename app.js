@@ -77,6 +77,8 @@ const sessionConfig = {
     }
 }
 
+app.set('trust proxy', true);
+
 app.use(session(sessionConfig));
 app.use(flash());
 

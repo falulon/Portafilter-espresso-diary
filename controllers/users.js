@@ -14,7 +14,7 @@ async (req,res) => {
     try{
     const {email, password} = req.body;
     const username = email.trim();
-    const city = await getIP.getCity();
+    const city = await getIP.getCity(req);
     const user = new User ({username, email, password, city});
     const registeredUser = await User.register(user, password);
     
