@@ -13,7 +13,7 @@ async(req, res)=>{
     const coffees = (await User.findById(userId).populate('coffees')).coffees;
     const coffeesArchived = (await User.findById(userId).populate({path: 'coffees', 
     match: {archivedAt: { $exists: true }}})).coffees;
-    res.render('coffees/index', ({coffeesArchived, coffees}))
+    res.render(`coffees/index.ejs`, ({coffeesArchived, coffees}))
 };
 
 
@@ -40,7 +40,7 @@ module.exports.add = async(req, res) => {
     await currentUser.save();
 
 
-    res.redirect(`coffees`)
+    res.redirect(`/coffees`)
 }
 
 module.exports.show = async(req, res) => {
