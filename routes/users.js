@@ -7,6 +7,7 @@ const {isFreshUser} = require('../middleware');
 
 
 router.get('/about', (req, res)=> {
+  req.flash('', '');
   res.render('about');
 })
 

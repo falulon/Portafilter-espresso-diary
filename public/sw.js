@@ -2,12 +2,10 @@ const staticCacheName = 'site-static-v4';
 const dynamicCacheName = 'site-dynamic-v3';
 const assets = [
   '/',
+  '/coffees/new',
   '/login',
   '/register',
-  '/coffees/new',
   '/about',
-  // '/coffees',
-  // '/drinks',
   'fallback.html',
   '/img/nathan-dumlao-r7uc-cqJy0Q-unsplash.jpg',
   '/img/janko-ferlic-h9Iq22JJlGk-unsplash.jpg',
@@ -15,8 +13,6 @@ const assets = [
   '/img/utopia-MS0RHQ1enek-unsplash.jpg',
   '/stylesheets/home.css',
   '/stylesheets/app.css',
-
-
   ];
 
 const ignorePages = [
