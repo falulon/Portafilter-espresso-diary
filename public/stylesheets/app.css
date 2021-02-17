@@ -15,7 +15,7 @@ color: #fff2e5!important;
 
 }
 
-@media screen and (max-height: 400px) {
+@media screen and (max-height: 600px) {
 
     .nav-mobile {
         display: none;
