@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "com.seethings.xyz.portafilterespresso",
+                   "sha256_cert_fingerprints": ["1E:C8:2B:24:82:6D:E4:A8:8E:20:59:6A:E9:6A:ED:FF:B0:E1:F8:F8:35:0E:F5:10:3D:5A:41:B2:27:91:FF:CA"] }
+    }]
