@@ -10,8 +10,11 @@ const assets = [
   // '/drinks',
   'fallback.html',
   '/img/nathan-dumlao-r7uc-cqJy0Q-unsplash.jpg',
+  '/img/janko-ferlic-h9Iq22JJlGk-unsplash.jpg',
+  '/img/portafilter_enis_yavuz_unsplash.webp',
+  '/img/utopia-MS0RHQ1enek-unsplash.jpg',
   '/stylesheets/home.css',
-  '/stylesheets/app.css'
+  '/stylesheets/app.css',
 
 
   ];
@@ -74,8 +77,7 @@ self.addEventListener('fetch', evt => {
   //   {console.log('fetch event', evt);};
  for (let page of ignorePages) {
    if(evt.request.url.indexOf(page) > -1){
-   console.log(evt);
-  evt.respondWith(fetch(evt.request));
+  evt.respondWith(fetch(evt.request).catch(()=>{return caches.match('/fallback.html');}));
 return; }
   }
   evt.respondWith(
