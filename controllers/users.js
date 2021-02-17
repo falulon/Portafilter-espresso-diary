@@ -39,7 +39,7 @@ module.exports.showLogin =
 module.exports.login =
 (req, res)=> {
     // req.flash('success', 'Welcome back!');
-    const redirectUrl = '/';
+    const redirectUrl = '/coffees';
     // const redirectUrl = req.session.returnTo || '/';
     // delete req.session.returnTo;
     res.redirect(redirectUrl);
