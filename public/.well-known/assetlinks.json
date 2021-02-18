@@ -1,5 +1,5 @@
 [{
       "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "com.seethings.xyz.portafilterespresso",
-                   "sha256_cert_fingerprints": ["1E:C8:2B:24:82:6D:E4:A8:8E:20:59:6A:E9:6A:ED:FF:B0:E1:F8:F8:35:0E:F5:10:3D:5A:41:B2:27:91:FF:CA"] }
+      "target" : { "namespace": "android_app", "package_name": "com.herokuapp.pacific_ocean_76044.twa",
+                   "sha256_cert_fingerprints": ["A4:A0:37:E1:33:AF:F9:03:22:FB:B8:8F:59:76:75:DB:0E:CB:89:77:04:8B:37:54:F1:02:FC:AF:5A:A4:C5:D5"] }
     }]
