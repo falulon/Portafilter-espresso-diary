@@ -6,7 +6,7 @@
                 class="img-fluid rounded" alt=" new coffee bag">
         </div>
 
-        <div class="col-md-4 mb-3 order-last order-md-first d-md-none">
+        <div class="col-md-4 mb-3 order-last order-md-first d-md-none invisible">
             <img src='https://images.pexels.com/photos/134577/pexels-photo-134577.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
                 class="img-fluid rounded" alt=" new coffee bag">
         </div>
@@ -45,7 +45,8 @@
 
 
                 <% for (let coffee of coffees) { %>
-                    <li class="list-group-item coffee-type-card rounded-3 shadow "><a href="/coffees/<%= coffee._id %>">
+                    <li class="list-group-item coffee-type-card trans-background rounded-3 shadow "><a
+                            href="/coffees/<%= coffee._id %>">
                             <h3>
                                 <%= coffee.name %>
                             </h3>
@@ -137,3 +138,25 @@
 
         </div>
         <% } %>
+
+            <style>
+                @media screen and (max-width: 480px) {
+
+                    body {
+
+
+                        background-image: radial-gradient(rgba(255, 253, 253, 0.96), rgba(255, 253, 253, 0.86)),
+                            url("../img/janko-ferlic-h9Iq22JJlGk-unsplash.jpg");
+
+                        background-size: cover;
+                        background-position: center;
+
+                    }
+
+                    .trans-background {
+                        background-color: rgba(255, 255, 255, 0.7);
+
+
+                    }
+                }
+            </style>

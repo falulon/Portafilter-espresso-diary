@@ -15,6 +15,13 @@ color: #fff2e5!important;
 
 }
 
+body {
+    background-image: linear-gradient(rgba(255, 253, 253, 1), rgba(255, 255, 255, 1));
+    /* url("https://images.unsplash.com/photo-1509785307050-d4066910ec1e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1228&q=80"); */
+        /* url("../img/janko-ferlic-h9Iq22JJlGk-unsplash.jpg"); */
+    background-size: cover; 
+    
+      }
 @media screen and (max-height: 550px) {
 
     .nav-mobile {
@@ -22,7 +29,6 @@ color: #fff2e5!important;
     }
 
 }
-
 .nav-link-mobile {
     color: rgba(255,255,255,.75)!important; 
     padding-top: 15px;
@@ -41,13 +47,6 @@ color: #fff2e5!important;
  }
 
  
- body {
-    background-image: linear-gradient(rgba(255, 253, 253, 1), rgba(255, 255, 255, 1));
-    /* url("https://images.unsplash.com/photo-1509785307050-d4066910ec1e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1228&q=80"); */
-        /* url("../img/janko-ferlic-h9Iq22JJlGk-unsplash.jpg"); */
-    background-size: cover; 
-    
-      }
 
 .coffee {
     color: #3b291d; 
@@ -56,6 +55,7 @@ color: #fff2e5!important;
 h1, h2, h3 { 
     color: #4e2c0b;
     font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;    
+    font-weight: lighter;
 }
 
 .danger-beige { 
@@ -96,13 +96,15 @@ a:hover {
 
         /* border-top: 1px rgba(11, 51, 78, 0.6) solid;  */
         border-radius: 2px 20px 20px 3px!important; 
-    
+            margin-bottom: 8px;
 }
+
 
 .drink-info:first-child {  
       
     border-top: 1px solid rgba(0,0,0,.125);
 }
+
 
 .card-header { 
     background-color: #fffaf5;
