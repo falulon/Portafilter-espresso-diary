@@ -13,7 +13,7 @@ router.get('/about', (req, res)=> {
 
 
 router.get('/',isFreshUser, (req, res)=> {
-  res.render('/coffees');
+  res.redirect('/coffees');
 })
 
 

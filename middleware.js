@@ -48,7 +48,8 @@ module.exports.isLoggedInAndRegistered = (req, res, next) => {
 module.exports.isFreshUser = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl
-        return res.redirect('/users/landing');
+        return res.render('users/landing');
+
     }
     next();
 }
