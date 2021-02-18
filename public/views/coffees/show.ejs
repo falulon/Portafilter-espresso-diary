@@ -189,11 +189,11 @@
                     <div class="mb-3">
                         <div class="input-group">
                             <label for="Temperature1" class="form-label my-3 ">Temperature:
-                            </label> <span id="rangeTempLabel" class=" mx-1">
-                                <% if (lastDrink.temperature !="88.5" ) { %>
-                                    <%=lastDrink.temperature || "" %>
-                                        <% } %>
-                            </span>
+                                <span id="rangeTempLabel" class=" mx-1">
+                                    <% if (lastDrink.temperature !="88.5" ) { %>
+                                        <%=lastDrink.temperature || "" %>
+                                            <% } %>
+                                </span> </label>
                             <input class="form-range " type="range" max="97" min="80"
                                 oninput="document.getElementById('rangeTempLabel').innerHTML = this.value;" step="0.5"
                                 id="temperaturePicker" name="drink[temperature]"
