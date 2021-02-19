@@ -76,11 +76,11 @@ drinkSchema.virtual('img').get(function() {
   drinkSchema.virtual('tampingLevelText').get(function() {
     switch (this.tampingLevel) {
         case 0:
-            return '💪🏻 x1';
+            return ' x1';
         case 1:
-            return '💪🏻 x2';
+            return ' x2';
         case 2:
-            return '💪🏻 x3' ;
+            return ' x3' ;
         
     }
     

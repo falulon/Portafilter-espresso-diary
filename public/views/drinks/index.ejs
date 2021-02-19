@@ -68,7 +68,8 @@
 
                                                 <% if (drink.tampingLevel) { %>
                                                     <li class="list-group-item">
-                                                        Tamping : <%= drink.tampingLevelText %>
+                                                        Tamping : <i class="bi bi-toggle2-off rotate"></i>
+                                                        <%= drink.tampingLevelText %>
                                                     </li>
                                                     <% } if ((drink.infusionLength) || (drink.temperature !=88.5) ) { %>
                                                         <li class="list-group-item d-flex justify-content-between">
