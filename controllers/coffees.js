@@ -40,7 +40,7 @@ module.exports.add = async(req, res) => {
     await currentUser.save();
 
 
-    res.redirect(`/coffees`)
+    res.redirect(`/coffees?updated`)
 }
 
 module.exports.show = async(req, res) => {
@@ -59,7 +59,7 @@ module.exports.update = async (req, res) => {
     console.log("PUT SUCCESS");
     const { id } = req.params;
     const coffee = await coffeeType.findByIdAndUpdate(id, { ...req.body.coffee});
-    res.redirect(`/coffees/${coffee._id}`)
+    res.redirect(`/coffees/${coffee._id}?updated`)
 }
 
 
@@ -68,7 +68,7 @@ const { id } = req.params;
     const coffee = await coffeeType.findById(id).where('archivedAt').exists();
     coffee.restore();
     req.flash('success', 'The bag is back to be active' );
-    res.redirect('/coffees');
+    res.redirect('/coffees?updated');
 };
 
 module.exports.archive =  async (req, res) => {
@@ -76,7 +76,7 @@ module.exports.archive =  async (req, res) => {
     const coffee = await coffeeType.findById(id)
     coffee.archive();
     req.flash('success', 'Bag archived!' );
-    res.redirect('/coffees');
+    res.redirect('/coffees?updated');
 }
 
 module.exports.delete =  async (req, res) => {
@@ -84,5 +84,5 @@ module.exports.delete =  async (req, res) => {
     const coffee = await coffeeType.findById(id)
     await coffeeType.findByIdAndDelete(id);
     req.flash('success', 'The bag was permenantly deleted' );
-    res.redirect('/coffees');
+    res.redirect('/coffees?updated');
 }

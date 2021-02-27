@@ -21,13 +21,13 @@ async (req,res) => {
     req.login(registeredUser, err => {
         if (err) return next(err);
         // req.flash('success', 'Welcome!' );
-    res.redirect('/coffees/');
+    res.redirect('/coffees/?updated');
     });
     
     }catch(e)
     {
         req.flash('error', e.message );
-        res.redirect('/register/');
+        res.redirect('/register/?updated');
 }})
 
 module.exports.showLogin =

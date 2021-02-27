@@ -2,6 +2,7 @@
 const ExpressError = require('./utils/ExpressError');
 const { coffeeTypeSchema, drinkTypeSchema} = require('./schemas.js');
 const {coffeeType} = require('./models/coffeetypes.js');
+const User = require('./models/user');
 
 
 module.exports.validateCoffeeType = (req, res, next) => {
@@ -64,5 +65,17 @@ module.exports.isUser = async (req, res, next) => {
         req.flash('error', 'You do not have permission to do that!');
         return res.redirect(`/coffees/${id}`);
     }
+    next();
+}
+
+
+
+module.exports.isRegistered = async (req, res, next) => {
+    const isExist = await User.findOne({email: req.body.email}); 
+if (isExist) {
+    req.flash('success', 'Please login');
+
+return res.redirect(`/login`);
+}
     next();
 }

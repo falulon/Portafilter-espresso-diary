@@ -19,7 +19,7 @@ module.exports.add = async(req, res) => {
     await currentUser.save();
     await drink.save();
     await coffee.save();
-    res.redirect(`/drinks`)
+    res.redirect(`/drinks?updated`)
 }
 
 module.exports.edit =  async (req, res) => {
@@ -33,7 +33,7 @@ module.exports.update = async (req, res) => {
     console.log("PUT SUCCESS");
     const { id } = req.params;
     const drink = await drinkType.findByIdAndUpdate(id, {...req.body.drink});
-    res.redirect(`/drinks`)
+    res.redirect(`/drinks?updated`)
 }
 
 
@@ -41,7 +41,7 @@ module.exports.update = async (req, res) => {
 module.exports.delete = async (req, res) => {
     const { id } = req.params;
     await drinkType.findByIdAndDelete(id);
-    res.redirect('/drinks');
+    res.redirect('/drinks?updated');
 }
 
 
