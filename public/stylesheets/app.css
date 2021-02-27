@@ -24,7 +24,7 @@ color: #fff2e5!important;
     /* padding-bottom: 8px; */
 }
 
-@media screen and (max-height: 550px) {
+@media screen and (max-height: 450px) {
 
     .nav-mobile {
         display: none;
