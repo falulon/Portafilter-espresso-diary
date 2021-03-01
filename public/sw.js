@@ -13,7 +13,7 @@ const assets = [
   '/img/utopia-MS0RHQ1enek-unsplash.jpg',
   '/stylesheets/home.css',
   '/stylesheets/app.css',
-  ];
+  ]; 
 
 const ignorePages = [
   '/coffees',
