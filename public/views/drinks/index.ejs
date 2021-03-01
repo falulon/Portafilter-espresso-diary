@@ -52,10 +52,7 @@
                                 <ul class="list-group list-group-flush drink-info">
 
                                     <% if (drink.comment) { %>
-                                        <li class="list-group-item drink-comment">
-
-                                            <%= drink.comment %>
-                                        </li>
+                                        <li class="list-group-item drink-comment"><%= drink.comment %></li>
                                         <% } if (drink.weight) { %>
                                             <li class="list-group-item">
                                                 <%= drink.weight %> grams
@@ -66,7 +63,7 @@
                                             </li>
                                             <% } %>
 
-                                                <% if (drink.tampingLevel) { %>
+                                                <% if (drink.tampingLevel && drink.tampingLevel != '1') { %>
                                                     <li class="list-group-item">
                                                         Tamping : <i class="bi bi-toggle2-off rotate"></i>
                                                         <%= drink.tampingLevelText %>
@@ -91,9 +88,7 @@
                                                                         <%= drink.tampLevel %>
                                                                     </li>
                                                                     <% } if (drink.nextTimeNote) { %>
-                                                                        <li class="list-group-item">
-                                                                            Next time: <%= drink.nextTimeNote %>
-                                                                        </li>
+                                                                        <li class="list-group-item">Next time: <%= drink.nextTimeNote %></li>
                                                                         <% } %>
                                 </ul>
                             </div>

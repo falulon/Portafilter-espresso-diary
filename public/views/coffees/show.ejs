@@ -70,9 +70,9 @@
             <form action="/drinks/coffees/<%=coffee.id%>/" method="POST" novalidate class="mb-3 validated-form">
 
                 <!-- drink type -->
-                <label class="form-label my-2 d-none d-md-block" for="body">What did you make? </label>
+                <label class="form-label my-3 d-none d-md-block" for="body">What did you make? </label>
                 <div class="mb-3 input-group input-group-lg">
-                    <input class="form-control" type="text" name="drink[type] id=" drinkName" list="beverages"
+                    <input class="form-control mb-3" type="text" name="drink[type] id=" drinkName" list="beverages"
                         placeholder="Ristretto" required
                         oninput="document.getElementById('drinkTotalWeightLabel').innerHTML = this.value + ' weight'">
                     <datalist id="beverages">
@@ -93,15 +93,14 @@
                         <option value="Ristretto" </option>
                         <option value="Other" </option>
                         <option value="Tea" </option>
-
-
                     </datalist>
-
                 </div>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
+
                 <input type="hidden" id="timeField" name="drink[date]">
+
                 <!-- grind level -->
                 <div class="my-3">
                     <div class="input-group">
@@ -206,7 +205,6 @@
                             <label class="form-label" for="nextTimeNote">Note for next cup (?)</label>
                             <textarea class="form-control" type="text" id="nextTimeNote"
                                 name="drink[nextTimeNote]"></textarea>
-
                         </div>
                     </div>
                 </div>

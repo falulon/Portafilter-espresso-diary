@@ -52,11 +52,11 @@
                 <!-- grind level -->
                 <div class="mb-3">
                     <div class="input-group">
-                        <label for="grindLevel" class="form-label mb-3 mr-1">Grind level:
+                        <label for="grindLevel" class="form-label mb-3 mr-1">Grind level: <%=drink.grindLevel %>
                         </label> <em id="rangeValLabel">
 
                         </em>
-                        <input class="form-range" type="range" max="10" min="-10"
+                        <input class="form-range mb-3" type="range" max="10" min="-10"
                             oninput="document.getElementById('rangeValLabel').innerHTML = this.value;" step="0.25"
                             id="grindLevel" name="drink[grindLevel]" value="<%=drink.grindLevel %>">
                     </div>
@@ -67,7 +67,7 @@
                     <!-- weight -->
                     <div class="mb-3">
                         <label class="form-label mb-3" for="drinkWeight">Weight (grams)</label>
-                        <input class="form-control mb-3" type="number" step="0.01" min="0" id="drinkWeight"
+                        <input class="form-control mb-4" type="number" step="0.01" min="0" id="drinkWeight"
                             value="<%= drink.weight %>" name="drink[weight]">
 
                         <!-- tamping level -->
@@ -75,7 +75,7 @@
                             <div class="input-group">
                                 <label for="tampingLevel" class="form-label">Tamping level (Light - Medium -
                                     Heavy)</label>
-                                <input type="range" value="<%= drink.tampingLevel %>" class="form-range" min="0" max="2"
+                                <input type="range" value="<%= drink.tampingLevel %>" class="form-range mb-3" min="0" max="2"
                                     id="tampingLevel" name="drink[tampingLevel]">
 
 
@@ -84,15 +84,15 @@
 
                             <div class="mb-3">
                                 <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" type="text" id="description"
-                                    name="drink[comment]"><%= drink.comment %> </textarea>
+                                <textarea class="form-control mb-3 edit-drink-textarea" type="text" id="description"
+                                    name="drink[comment]"><%=drink.comment%></textarea>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
                             </div>
 
                             <!-- stopwatch -->
-                            <div class="stopwatch">
+                            <div class="stopwatch mb-3">
                                 Shot length:
                                 <input class="mx-2" type="text" id="stopwatchDisplay" name="drink[infusionLength]"
                                     maxlength="10" size="8" value="<%=drink.infusionLength %>" />seconds
@@ -117,7 +117,7 @@
                                     </label> <span id="rangeTempLabel" class=" mx-1">
                                         <%=drink.temperature || 88 %>
                                     </span>
-                                    <input class="form-range " type="range" max="97" min="80"
+                                    <input class="form-range mb-3" type="range" max="97" min="80"
                                         oninput="document.getElementById('rangeTempLabel').innerHTML = this.value;"
                                         step="0.5" id="temperaturePicker" name="drink[temperature]"
                                         value="<%=drink.temperature || 88 %>">
@@ -127,23 +127,23 @@
 
                                 <div class="mb-3">
                                     <label class="form-label" for="nextTimeNote">Note for next cup (?)</label>
-                                    <textarea class="form-control" type="text" id="nextTimeNote"
+                                    <textarea class="form-control mb-3 edit-drink-textarea" type="text" id="nextTimeNote"
                                         name="drink[nextTimeNote]"><%= drink.nextTimeNote%></textarea>
 
                                 </div>
 
-                                <button class="btn btn-success">Save</button>
-            </form>
-        </div>
-
-
+                                <div class="row my-5">
+                                    <div class="col">
+                                        <button class="btn btn-success">Save</button>
+                                    </div>
+              </form>
+                                    <div class="col">
+                                        <form action="/drinks/<%=drink.id%>?_method=DELETE" method="POST">
+                                            <button class="btn btn-danger float-end">Delete</button>
+                                        </form>
+                                    </div>
+                              </div>
     </div>
 
-
-    <div class="col-2">
-        <form action="/drinks/<%=drink.id%>?_method=DELETE" method="POST">
-            <button class="btn btn-danger">Delete</button>
-        </form>
     </div>
-
     </div>
